@@ -11,7 +11,7 @@ var jamatApp = angular.module('jamatApp', ['ionic', 'ngResource', 'LocalStorageM
         "COUNTRY": "5",
         "TAJNEED_TYPE": "6"
       })
-      .constant("SERVICE", {
+      .constant("SERVICE", { 
         "BASE_ADDRESS": "http://amc.azurewebsites.net/" //http://localhost:91/"
       });
 
