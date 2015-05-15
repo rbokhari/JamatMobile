@@ -1,0 +1,23 @@
+<ion-header-bar class="bar-balanced">
+  <h1 class="title">Jamat App - Login </h1>
+</ion-header-bar>
+
+
+<ion-view name="login-view">
+  <ion-content class="padding">
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="loginData.userName">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="loginData.password">
+          </label>
+      </div>
+      <button class="button button-block button-calm" ng-click="login()">Login</button>
+      <div class="bar bar-assertive" ng-show="message">
+        <h1 class="title">{{message}}</h1>
+      </div>
+  </ion-content>
+</ion-view>
+
+
