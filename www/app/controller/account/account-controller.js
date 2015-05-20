@@ -1,12 +1,22 @@
 
-jamatApp.controller('AccountController',['$scope','$state', 'authRepository', 
-	function($scope, $state, authRepository){
+jamatApp.controller('AccountController',['$scope','$state', 'authRepository', 'localStorageService', 
+	function($scope, $state, authRepository, localStorageService){
 
         $scope.loginData = {
             userName: "",
             password: ""
         };
 
+
+		$scope.verifyAutoLogin = function(){
+		
+				var authData = localStorageService.get('authorizationData');
+				
+				if (authData){
+					$state.go('app.dashboard');
+				}
+		};
+		
 		$scope.login = function(){
 			$scope.isLoginProcess = false;
 

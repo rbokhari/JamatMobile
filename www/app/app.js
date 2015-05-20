@@ -12,7 +12,7 @@ var jamatApp = angular.module('jamatApp', ['ionic', 'ngResource', 'LocalStorageM
         "TAJNEED_TYPE": "6"
       })
       .constant("SERVICE", { 
-        "BASE_ADDRESS": "http://amc.azurewebsites.net/" //http://localhost:91/"
+        "BASE_ADDRESS": "http://localhost:91/" //"http://amc.azurewebsites.net/" 
       });
 
 
@@ -30,7 +30,7 @@ jamatApp.run(function($ionicPlatform, $rootScope, $ionicLoading) {
   });
 
   $rootScope.$on('loading:show', function() {
-    $ionicLoading.show({template: 'Loading ...'});
+    $ionicLoading.show({template: '<img src="/img/input-spinner.gif" alt="" />'});
   });
 
   $rootScope.$on('loading:hide', function() {
@@ -72,19 +72,118 @@ jamatApp.config(function($stateProvider, $urlRouterProvider, $httpProvider){
       url:'/tajneed/list',
       views: {
         'mainContent':{
-          templateUrl:'app/templates/tajneed-list.html'
+          templateUrl:'app/templates/tajneed/tajneed-list.html'
         }
       }
     })
 
+  .state('app.tajneed-head',{
+      url:'/tajneed/head',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-head.html'
+        }
+      }
+    })
+
+  .state('app.tajneed-region',{
+      url:'/tajneed/head/region',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-region.html'
+        }
+      }
+    })
+
+  .state('app.tajneed-auxilary',{
+      url:'/tajneed/head/auxilary',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-auxilary.html'
+        }
+      }
+    })
+
+  .state('app.tajneed-nationality',{
+      url:'/tajneed/head/nationality',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-nationality.html'
+        }
+      }
+    })
+
+  .state('app.tajneed-search',{
+      url:'/tajneed/head/search',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-search.html'
+        }
+      }
+    })
+
+    .state('app.tajneed-list-auxilary',{
+      url:'/tajneed/list/:auxilary',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-list.html'
+        }
+      }
+    })
+
+    .state('app.tajneed-list-nationality',{
+      url:'/tajneed/list/:nationality',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-list.html'
+        }
+      }
+    })
+        
+    .state('app.tajneed-list-region',{
+      url:'/tajneed/list/:region',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-list.html'
+        }
+      }
+    })
+
+    .state('app.tajneed-list-mosi',{
+      url:'/tajneed/list/:mosi',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-list.html'
+        }
+      }
+    })
+
+    .state('app.tajneed-list-search',{
+      url:'/tajneed/list/',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-list.html'
+        }
+      }
+    })
+    
     .state('app.tajneed-detail',{
       url:'/tajneed/detail/:id',
       views: {
         'mainContent':{
-          templateUrl:'app/templates/tajneed-detail.html'
+          templateUrl:'app/templates/tajneed/tajneed-detail.html'
         }
       }
     })
+
+    .state('app.tajneed-detail-general',{
+      url:'/tajneed/detail-general/:id',
+      views: {
+        'mainContent':{
+          templateUrl:'app/templates/tajneed/tajneed-detail-general.html'
+        }
+      }
+    });
 
     $urlRouterProvider.otherwise('/login');
 

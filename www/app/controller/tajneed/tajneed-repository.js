@@ -14,6 +14,26 @@ jamatApp.factory('tajneedRepository', ['$resource', '$http', 'SERVICE', function
         return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/' + id).query();
     };
 
+    var _getTajneedByRegionId = function (id) {
+        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/GetTajneedByRegion/' + id).query();
+    };
+    
+    var _getTajneedByAuxilaryId = function (id) {
+        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/GetTajneedByAuxilary/' + id).query();
+    };
+
+    var _getTajneedByNationalityId = function (id) {
+        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/GetTajneedByNationality/' + id).query();
+    };
+    
+    var _getTajneedByMosi = function () {
+        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/GetTajneedByMosi/').query();
+    };
+
+    var _getTajneedSearch = function () {
+        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/GetTajneedSearch/').query();
+    };
+    
     var _addTajneed = function (tajneed) {
         return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/').save(tajneed);
     };
@@ -26,9 +46,8 @@ jamatApp.factory('tajneedRepository', ['$resource', '$http', 'SERVICE', function
         return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/' + tajneedIncome.tajneedId + '/PostTajneedIncome').save(tajneedIncome);
     };
 
-
-    var _getCountByAuxilary = function() {
-        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/getTajneedAuxilary').query();
+    var _getCountByAuxilary = function(id) {
+        return $resource(SERVICE.BASE_ADDRESS + 'api/tajneed/GetTajneedByAuxilary/' + id).query();
     };
 
     var _getCountByRegion = function () {
@@ -46,6 +65,11 @@ jamatApp.factory('tajneedRepository', ['$resource', '$http', 'SERVICE', function
     return {
         getAllTajneed: _getAllTajneed,
         getTajneedById: _getTajneedById,
+        getTajneedByRegionId: _getTajneedByRegionId,
+        getTajneedByAuxilaryId: _getTajneedByAuxilaryId,
+        getTajneedByNationalityId: _getTajneedByNationalityId,
+        getTajneedByMosi: _getTajneedByMosi,
+        getTajneedSearch:  _getTajneedSearch,
         addTajneed: _addTajneed,
         editTajneed: _editTajneed,
         addTajneedIncome: _addTajneedIncome,

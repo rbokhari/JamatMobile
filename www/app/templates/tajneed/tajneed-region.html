@@ -1,0 +1,14 @@
+<ion-view title="Tajneed Region" ng-controller="RegionController">
+	<ion-content class="has-header" ng-init="loadRegion()">
+	
+		<div class="list card" ng-repeat="region in regions">
+	
+		  <a ui-sref="app.tajneed-list-region({region:{{region.regionId}}})"  class="item item-icon-left item-icon-right">
+		    <i class="icon ion-ios-home-outline"></i>
+		    {{region.regionName}}
+			<i class="icon ion-ios-arrow-right"></i>
+		  </a>
+		
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,14 @@
+<ion-view title="Tajneed Auxilary" ng-controller="ValidationController">
+	<ion-content class="has-header" ng-init="loadAuxilary()">
+	
+		<div class="list card" ng-repeat="aux in auxilaries">
+	
+		  <a ui-sref="app.tajneed-list-auxilary({auxilary:{{aux.id}}})" class="item item-icon-left item-icon-right">
+		    <i class="icon ion-ios-person-outline"></i>
+		    {{aux.nameEn}}
+			<i class="icon ion-ios-arrow-right"></i>
+		  </a>
+		
+		</div>
+	</ion-content>
+</ion-view>

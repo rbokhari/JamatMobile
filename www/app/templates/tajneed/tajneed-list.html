@@ -1,0 +1,23 @@
+<ion-view title="Tajneed List" ng-controller="TajneedController">
+	<ion-content class="has-header">
+
+<!--<div class="list">
+	<a ui-sref="app.tajneed-detail({id:{{tajneed.id}}})" class="item item-avatar">
+	    <img src="/img/profile-pic.jpg" />
+	    <h2>Title</h2>
+	  </a>
+</div>-->
+
+		<div class="list" >
+	
+		  <a ui-sref="app.tajneed-detail({id:{{tajneed.id}}})" class="item item-avatar" ng-repeat="tajneed in tajneeds">
+		    <img src="/img/profile-pic.jpg" />
+		    <h2>{{tajneed.firstName}} {{tajneed.middleName}}</h2>
+			<p>{{tajneed.fatherName}}</p>
+			<p>{{tajneed.mobileNumber}}</p>
+			<p>{{tajneed.regionDetail.regionName}} - {{tajneed.auxilaryDetail.nameEn}} - {{tajneed.nationalityDetail.nameEn}}</p>
+		  </a>
+		</div>	
+	
+	</ion-content>
+</ion-view>

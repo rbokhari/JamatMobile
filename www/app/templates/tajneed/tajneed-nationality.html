@@ -1,0 +1,14 @@
+<ion-view title="Tajneed Nationality" ng-controller="ValidationController">
+	<ion-content class="has-header" ng-init="loadNationality()">
+	
+		<div class="list card" ng-repeat="nat in nationalities">
+	
+		  <a ui-sref="app.tajneed-list-nationality({nationality:{{nat.id}}})" class="item item-icon-left item-icon-right">
+		    <i class="icon ion-ios-flag-outline"></i>
+		    {{nat.nameEn}}
+			<i class="icon ion-ios-arrow-right"></i>
+		  </a>
+		
+		</div>
+	</ion-content>
+</ion-view>

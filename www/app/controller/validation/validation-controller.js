@@ -2,24 +2,44 @@
 'use strict';
 
 jamatApp.controller('ValidationController',
-    ['$scope', 'validationRepository', '$location', '$routeParams',
-        function ($scope, validationRepository, $location, $routeParams) {
+    ['$scope', 'validationRepository', '$stateParams',
+        function ($scope, validationRepository, $stateParams) {
 
             console.log("validation controller");
             
             $scope.isBusy = true;
 
-            $scope.validationDetails = validationRepository.get();
-            $scope.validationDetails.$promise.then(function () {
-                //alert("success");
-            }, function () {
-                //alert("error");
-            })
-            .then(function () { $scope.isBusy = false; });
+//            $scope.validationDetails = validationRepository.get();
+//            $scope.validationDetails.$promise.then(function () {
+//                //alert("success");
+//            }, function () {
+//                //alert("error");
+//            })
+//            .then(function () { $scope.isBusy = false; });
+            
+            $scope.loadAuxilary = function(){
+                $scope.auxilaries = validationRepository.getAllAuxilary();
+                $scope.auxilaries
+                      .$promise
+                      .then(function(response){
+                      }, function(error){
+                      });
+            };
 
+
+            $scope.loadNationality = function(){
+                $scope.nationalities = validationRepository.getAllNationality();
+                $scope.nationalities
+                      .$promise
+                      .then(function(response){
+
+                      }, function(error){
+                      });
+            };
+            
             //alert($routeParams.id);
-            if ($routeParams.id != undefined) {
-                $scope.validationDetail = validationRepository.getSingleDetailByValidationId($routeParams.id);
+            if ($stateParams.id != undefined) {
+                $scope.validationDetail = validationRepository.getSingleDetailByValidationId($stateParams.id);
             }
 
             $scope.save = function (validationDetail) {

@@ -1,8 +1,8 @@
 
 jamatApp.controller('TajneedController',
 [
-    '$scope', '$location', '$routeParams', 'tajneedRepository', 'validationRepository', 'countryRepository',
-    function ($scope, $location, $routeParams, tajneedRepository, validationRepository, countryRepository) {
+    '$scope', '$state', '$location', '$stateParams', 'tajneedRepository', 'validationRepository', 'countryRepository',
+    function ($scope, $state, $location, $stateParams, tajneedRepository, validationRepository, countryRepository) {
 
         console.log("tajneed controller");
 
@@ -81,14 +81,65 @@ jamatApp.controller('TajneedController',
             $scope.Regions = countryRepository.getAllRegionsByCountryId(id);
         };
 
-        if ($routeParams.id != undefined) {
+        if ($stateParams.id != undefined) {
+            console.log("id found");
             $scope.isBusy = false;
-            $scope.tajneed = tajneedRepository.getTajneedById($routeParams.id);
+            $scope.tajneed = tajneedRepository.getTajneedById($stateParams.id);
             $scope.tajneed.$promise
                 .then(function () { }, function () { })
                 .then(function () { $scope.isBusy = true; });
         }
 
+
+        if ($stateParams.region != undefined) {
+            console.log("region found");
+            $scope.isBusy = false;
+            $scope.tajneeds = tajneedRepository.getTajneedByRegionId($stateParams.region);
+            $scope.tajneeds.$promise
+                .then(function () { }, function () { })
+                .then(function () { $scope.isBusy = true; });
+        }
+        
+        if ($stateParams.auxilary != undefined) {
+            console.log("auxilary found");
+            $scope.isBusy = false;
+            $scope.tajneeds = tajneedRepository.getTajneedByAuxilaryId($stateParams.auxilary);
+            $scope.tajneeds.$promise
+                .then(function () { }, function () { })
+                .then(function () { $scope.isBusy = true; });
+        }
+
+        if ($stateParams.nationality != undefined) {
+            console.log("nationality found");
+            $scope.isBusy = false;
+            $scope.tajneeds = tajneedRepository.getTajneedByNationalityId($stateParams.nationality);
+            $scope.tajneeds.$promise
+                .then(function () { }, function () { })
+                .then(function () { $scope.isBusy = true; });
+        }
+
+
+        if ($stateParams.mosi != undefined) {
+            console.log("mosi found");
+            $scope.isBusy = false;
+            $scope.tajneeds = tajneedRepository.getTajneedByMosi();
+            $scope.tajneeds.$promise
+                .then(function () { }, function () { })
+                .then(function () { $scope.isBusy = true; });
+        }
+        
+        $scope.searchTajneed = function(){
+            console.log("search");
+            $scope.tajneeds = tajneedRepository.getTajneedSearch();
+            $scope.tajneeds.$promise
+                .then(function (response) {
+                    console.log("found results")
+                    console.log($scope.tajneeds);
+                    $state.go('app.tajneed-list-search');
+                 }, function () { })
+                .then(function () { $scope.isBusy = true; });
+        };
+        
         // Modal service start ----------------
 /*        $scope.showIncome = function (id) {
             ModalService.showModal({
